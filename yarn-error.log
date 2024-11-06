@@ -1,5 +1,5 @@
 Arguments: 
-  /home/mohit01/.nvm/versions/node/v20.18.0/bin/node /home/mohit01/.nvm/versions/node/v20.18.0/bin/yarn add --dev @nomiclabs/hardhat-chai-matchers
+  /home/mohit01/.nvm/versions/node/v20.18.0/bin/node /home/mohit01/.nvm/versions/node/v20.18.0/bin/yarn add @nomicfoundation
 
 PATH: 
   /home/mohit01/.nvm/versions/node/v20.18.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
@@ -14,8 +14,8 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@nomiclabs%2fhardhat-chai-matchers: Not found
-      at params.callback [as _callback] (/home/mohit01/.nvm/versions/node/v20.18.0/lib/node_modules/yarn/lib/cli.js:66145:18)
+  Error: https://registry.yarnpkg.com/@nomicfoundation: Request "https://registry.yarnpkg.com/@nomicfoundation" returned a 405
+      at params.callback [as _callback] (/home/mohit01/.nvm/versions/node/v20.18.0/lib/node_modules/yarn/lib/cli.js:66154:18)
       at self.callback (/home/mohit01/.nvm/versions/node/v20.18.0/lib/node_modules/yarn/lib/cli.js:140890:22)
       at Request.emit (node:events:519:28)
       at Request.<anonymous> (/home/mohit01/.nvm/versions/node/v20.18.0/lib/node_modules/yarn/lib/cli.js:141862:10)
@@ -38,14 +38,13 @@ npm manifest:
       "@nomicfoundation/hardhat-toolbox": "^5.0.0",
       "@nomicfoundation/hardhat-verify": "^2.0.0",
       "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers",
-      "@nomiclabs/hardhat-waffle": "^2.0.6",
       "@typechain/ethers-v6": "^0.5.0",
       "@typechain/hardhat": "^9.0.0",
       "chai": "^4.2.0",
       "dotenv": "^16.4.5",
       "ethers": "^6.13.4",
       "hardhat": "^2.22.13",
-      "hardhat-deploy": "^0.13.0",
+      "hardhat-deploy": "^0.14.0",
       "hardhat-gas-reporter": "^2.2.1",
       "prettier": "^3.3.3",
       "prettier-plugin-solidity": "^1.4.1",
@@ -1060,11 +1059,6 @@ Lockfile:
     version "0.4.2"
     resolved "https://registry.yarnpkg.com/hardhat-deploy-ethers/-/hardhat-deploy-ethers-0.4.2.tgz#10aa44ef806ec8cf3d67ad9692f3762ed965b5e7"
     integrity sha512-AskNH/XRYYYqPT94MvO5s1yMi+/QvoNjS4oU5VcVqfDU99kgpGETl+uIYHIrSXtH5sy7J6gyVjpRMf4x0tjLSQ==
-  
-  "@nomiclabs/hardhat-waffle@^2.0.6":
-    version "2.0.6"
-    resolved "https://registry.yarnpkg.com/@nomiclabs/hardhat-waffle/-/hardhat-waffle-2.0.6.tgz#d11cb063a5f61a77806053e54009c40ddee49a54"
-    integrity sha512-+Wz0hwmJGSI17B+BhU/qFRZ1l6/xMW82QGXE/Gi+WTmwgJrQefuBs1lIf7hzQ1hLk6hpkvb/zwcNkpVKRYTQYg==
   
   "@openzeppelin/contracts-upgradeable@4.9.3":
     version "4.9.3"
@@ -2791,10 +2785,10 @@ Lockfile:
     optionalDependencies:
       uglify-js "^3.1.4"
   
-  hardhat-deploy@^0.13.0:
-    version "0.13.0"
-    resolved "https://registry.yarnpkg.com/hardhat-deploy/-/hardhat-deploy-0.13.0.tgz#8a8ffd9d020d119cb90f9955792dc8b99e765915"
-    integrity sha512-tGT55vaGIijMYm2nin6ypSfFPLwqsPzKIRZ5yW7/PAyk5Rv0yIKEQNLk8zomMn0vNXR8ral3lf4ociA2u7uxSA==
+  hardhat-deploy@^0.14.0:
+    version "0.14.0"
+    resolved "https://registry.yarnpkg.com/hardhat-deploy/-/hardhat-deploy-0.14.0.tgz#4897bd50c93b3a9ce135728f84fd4a1736469f6b"
+    integrity sha512-jZm0bJGHeH7dEyCzz69hsS8HlNNLJLjXDQVlStczulf54vYJUfRvZ+t3x20QsdXQoXUe6Qujlp8cKbx6JjFpZw==
     dependencies:
       "@ethersproject/abi" "^5.7.0"
       "@ethersproject/abstract-signer" "^5.7.0"
@@ -2819,7 +2813,7 @@ Lockfile:
       match-all "^1.2.6"
       murmur-128 "^0.2.1"
       qs "^6.9.4"
-      zksync-ethers "^5.8.0"
+      zksync-ethers "^5.0.0"
   
   hardhat-gas-reporter@^2.2.1:
     version "2.2.1"
@@ -4870,9 +4864,9 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
     integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
   
-  zksync-ethers@^5.8.0:
-    version "5.9.2"
-    resolved "https://registry.yarnpkg.com/zksync-ethers/-/zksync-ethers-5.9.2.tgz#1c5f34cb25ac0b040fd1a6118f2ba1c2c3bda090"
-    integrity sha512-Y2Mx6ovvxO6UdC2dePLguVzvNToOY8iLWeq5ne+jgGSJxAi/f4He/NF6FNsf6x1aWX0o8dy4Df8RcOQXAkj5qw==
+  zksync-ethers@^5.0.0:
+    version "5.10.0"
+    resolved "https://registry.yarnpkg.com/zksync-ethers/-/zksync-ethers-5.10.0.tgz#3caf25478539a3fd6e170c13555cec6a1dae32e2"
+    integrity sha512-OAjTGAHF9wbdkRGkj7XZuF/a1Sk/FVbwH4pmLjAKlR7mJ7sQtQhBhrPU2dCc67xLaNvEESPfwil19ES5wooYFg==
     dependencies:
       ethers "~5.7.0"
