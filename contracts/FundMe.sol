@@ -1,28 +1,67 @@
 // SPDX-License-Identifier: MIT
-
+// Pragma
 pragma solidity ^0.8.27;
-
+// Imports
 import "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 import "./PriceConverter.sol";
+// Error Codes
+error FundMe__NotOwner();
 
-error NotOwner();
+// Interfaces, Libraries, Contracts
+
+/**
+ * @title A contract for crowd funding
+ * @author Mohit Sen
+ * @notice This contract is to demo a sample funding contract
+ * @dev This implements price feeds as our library
+ */
 
 contract FundMe {
+    // Type Declarations
     using PriceConverter for uint256;
 
+    // State Variables!
     mapping(address => uint256) public addressToAmountFunded;
     address[] public funders;
 
     // Could we make this constant?  /* hint: no! We should make it immutable! */
-    address public i_owner;
+    address public immutable i_owner;
     uint256 public constant MINIMUM_USD = 50 * 10 ** 18;
 
     AggregatorV3Interface public priceFeed;
+
+    modifier onlyOwner() {
+        if (msg.sender != i_owner) revert FundMe__NotOwner();
+        _;
+    }
+
+    // Function Order
+    //// constructor
+    ////receive
+    ////fallback
+    ////external
+    ////public
+    ////internal
+    ////private
+    ////view / pure
 
     constructor(address priceFeedAddress) {
         i_owner = msg.sender;
         priceFeed = AggregatorV3Interface(priceFeedAddress);
     }
+
+    receive() external payable {
+        fund();
+    }
+
+    fallback() external payable {
+        fund();
+    }
+
+    /**
+     * @notice This function funds this contract
+     * @dev This implements price feeds as our library
+     */
 
     function fund() public payable {
         require(
@@ -31,11 +70,6 @@ contract FundMe {
         );
         addressToAmountFunded[msg.sender] = msg.value;
         funders.push(msg.sender);
-    }
-
-    modifier onlyOwner() {
-        if (msg.sender != i_owner) revert NotOwner();
-        _;
     }
 
     function withdraw() public onlyOwner {
@@ -60,14 +94,6 @@ contract FundMe {
             value: address(this).balance
         }("");
         require(callSuccess, "Call failed");
-    }
-
-    fallback() external payable {
-        fund();
-    }
-
-    receive() external payable {
-        fund();
     }
 }
 
