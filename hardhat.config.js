@@ -1,6 +1,11 @@
 require("@nomicfoundation/hardhat-toolbox");
 
 require("hardhat-deploy");
+require("hardhat-gas-reporter");
+// require("@nomiclabs/hardhat-etherscan");
+require("@nomiclabs/hardhat-ethers");
+require("dotenv").config();
+require("solidity-coverage");
 require("dotenv").config();
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
@@ -51,14 +56,14 @@ module.exports = {
     },
     etherscan: {
         apiKey: ETHERSCAN_API_KEY,
-        // customChains: [], // uncomment this line if you are getting a TypeError: customChains is not iterable
+        customChains: [], // uncomment this line if you are getting a TypeError: customChains is not iterable
     },
     gasReporter: {
         enabled: true,
         currency: "USD",
         outputFile: "gas-report.txt",
         noColors: true,
-        // coinmarketcap: COINMARKETCAP_API_KEY,
+        coinmarketcap: COINMARKETCAP_API_KEY,
     },
     namedAccounts: {
         deployer: {
